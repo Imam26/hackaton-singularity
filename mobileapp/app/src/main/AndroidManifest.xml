@@ -18,7 +18,7 @@
             android:name=".presentation.start.StartActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.main.MainActivity"
+            android:name=".presentation.main.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
