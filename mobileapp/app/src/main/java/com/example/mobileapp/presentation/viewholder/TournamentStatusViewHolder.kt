@@ -14,10 +14,19 @@ class TournamentStatusViewHolder(
     parent: ViewGroup
 ): RecyclerView.ViewHolder(inflater.inflate(R.layout.item_tournament_status, parent, false))  {
 
+    private lateinit var tournamentName: TextView
+    private lateinit var tournamentStatusTw: TextView
+    private lateinit var tournamentTypeName: TextView
+
     @RequiresApi(Build.VERSION_CODES.M)
     fun onBind(item: Tournament, clickListener: (item: Tournament) -> Unit){
-        itemView.findViewById<TextView>(R.id.tournamentName).text = item.name
-        var tournamentStatusTw = itemView.findViewById<TextView>(R.id.tournamentStatus)
+        tournamentName = itemView.findViewById(R.id.tournamentName)
+        tournamentName.text = item.name
+
+        tournamentTypeName = itemView.findViewById(R.id.tournamentTypeName)
+        tournamentTypeName.text = item.tournamentTypeName
+
+        tournamentStatusTw = itemView.findViewById(R.id.tournamentStatus)
         tournamentStatusTw.text = item.status
 
         when (item.statusId) {

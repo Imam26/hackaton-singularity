@@ -7,6 +7,9 @@ import com.example.mobileapp.domain.repository.TournamentRepository
 
 class TournamentRepositoryImpl: TournamentRepository {
     override fun getTournaments(userId: Int): List<Tournament> {
+        for(item in Data.tournaments){
+            item.tournamentTypeName = Data.tournamentTypes.find { it.id == item.tournamentTypeId }?.name ?: ""
+        }
         return Data.tournaments
     }
 

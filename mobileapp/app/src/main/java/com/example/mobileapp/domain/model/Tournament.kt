@@ -4,7 +4,7 @@ data class Tournament(
     val id:Int = 0,
     var name:String = "",
     var tournamentTypeId:Int = 0,
-    val tournamentTypeName: String = "",
+    var tournamentTypeName: String = "",
     val players: MutableList<Player> = mutableListOf(),
     var statusId: Int = 0,
     var status: String = ""

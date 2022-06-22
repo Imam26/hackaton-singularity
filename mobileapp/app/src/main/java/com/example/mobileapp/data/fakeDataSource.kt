@@ -6,8 +6,8 @@ import com.example.mobileapp.domain.model.TournamentType
 object Data {
     val tournamentTypes = listOf(
         TournamentType(1, "Теннис"),
-        TournamentType(1, "FIFA"),
-        TournamentType(1, "Mortal Kombat"),
+        TournamentType(2, "FIFA"),
+        TournamentType(3, "Mortal Kombat"),
     )
 
     val tournaments = mutableListOf<Tournament>()

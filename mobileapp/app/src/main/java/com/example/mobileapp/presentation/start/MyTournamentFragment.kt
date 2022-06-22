@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,12 +18,16 @@ class MyTournamentFragment : Fragment() {
 
     private val viewModel: MyTournamentViewModel by viewModel()
     private lateinit var tournamentStatusAdapter: TournamentStatusAdapter
+    private lateinit var notFoundTv: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         viewModel.tournamentStatuses.observe(this){
             tournamentStatusAdapter.setItems(it)
+            if(it.isNotEmpty()){
+                notFoundTv.alpha = 0F
+            }
         }
         viewModel.loadTournamentStatuses()
     }
@@ -30,6 +35,8 @@ class MyTournamentFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_my_tournament, container, false)
         setupRecyclerView(view)
+        notFoundTv = view.findViewById(R.id.notFoundTv)
+        notFoundTv.alpha = 1F
         return view
     }
 
