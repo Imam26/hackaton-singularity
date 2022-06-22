@@ -16,9 +16,12 @@ class StartActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottomNav)
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.create -> true
+                R.id.create -> {
+                    replaceFragment(CreateTournamentFragment(), false)
+                    true
+                }
                 R.id.tournamentList -> {
-                    replaceFragment(MyTournamentFragment())
+                    replaceFragment(MyTournamentFragment(), false)
                     true
                 }
                 else -> false

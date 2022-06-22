@@ -3,7 +3,7 @@ package com.example.mobileapp.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileapp.presentation.model.TournamentStatus
+import com.example.mobileapp.domain.model.TournamentStatus
 import com.example.mobileapp.presentation.viewholder.TournamentStatusViewHolder
 
 class TournamentStatusAdapter(

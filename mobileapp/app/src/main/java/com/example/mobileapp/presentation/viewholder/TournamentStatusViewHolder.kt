@@ -1,6 +1,5 @@
 package com.example.mobileapp.presentation.viewholder
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +7,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileapp.R
-import com.example.mobileapp.presentation.model.TournamentStatus
+import com.example.mobileapp.domain.model.TournamentStatus
 
 class TournamentStatusViewHolder(
     inflater: LayoutInflater,

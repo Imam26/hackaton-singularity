@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileapp.R
 import com.example.mobileapp.presentation.adapter.TournamentStatusAdapter
-import com.example.mobileapp.presentation.model.TournamentStatus
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyTournamentFragment : Fragment() {

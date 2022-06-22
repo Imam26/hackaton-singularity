@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.start.CreateTournamentFragment">
+
+    <EditText
+        android:id="@+id/tournamentNameEt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Название"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <Spinner
+        android:id="@+id/tournamentKindS"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tournamentNameEt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        android:spinnerMode="dropdown"
+        android:background="@drawable/bg_spinner"/>
+
+    <EditText
+        android:id="@+id/playerListEt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tournamentKindS"
+        android:hint="Список игроков"
+        android:minLines="1"
+        android:maxLines="10"
+        app:layout_constraintWidth_percent="0.8"
+        android:inputType="text|textMultiLine"/>
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"
+        app:layout_constraintTop_toBottomOf="@id/playerListEt"
+        app:layout_constraintStart_toStartOf="@id/tournamentKindS" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

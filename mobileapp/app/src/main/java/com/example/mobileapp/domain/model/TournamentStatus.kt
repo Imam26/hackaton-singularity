@@ -1,6 +1,4 @@
-package com.example.mobileapp.presentation.model
-
-import androidx.constraintlayout.widget.VirtualLayout
+package com.example.mobileapp.domain.model
 
 data class TournamentStatus(
     val id:Int,
