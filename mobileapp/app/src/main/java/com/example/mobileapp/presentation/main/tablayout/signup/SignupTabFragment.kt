@@ -1,13 +1,16 @@
 package com.example.mobileapp.presentation.main.tablayout.signup
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.mobileapp.R
 import com.example.mobileapp.presentation.main.model.SignupModel
+import com.example.mobileapp.presentation.start.StartActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignupTabFragment : Fragment(R.layout.signup_tab_fragment) {
@@ -22,9 +25,10 @@ class SignupTabFragment : Fragment(R.layout.signup_tab_fragment) {
         val confirmedPasswordET = view.findViewById<EditText>(R.id.et_confirmed_password)
 
         signupViewModel.response.observe(viewLifecycleOwner) {
-            Log.i("SignupTabFragment", it)
-            // TODO: open a main screen
-
+            if (it == "success") {
+                val intent = Intent(context, StartActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         view.findViewById<Button>(R.id.btn_signup).setOnClickListener {

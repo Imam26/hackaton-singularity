@@ -11,6 +11,6 @@ val mainModule = module {
     factory { }
     factory { MyRepository() }
     viewModel { LoginViewModel(get()) }
-    viewModel { SignupViewModel(get<MyRepository>()) }
+    viewModel { SignupViewModel(get()) }
     factory { MyTournamentViewModel() }
 }
