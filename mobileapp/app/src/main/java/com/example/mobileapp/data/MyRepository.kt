@@ -10,8 +10,8 @@ class MyRepository : LoginService, SignupService {
         Log.i("MyRepository", model.login)
     }
 
-    override fun signup(model: SignupModel) {
-        Log.i("MyRepository", model.password)
+    override fun signup(model: SignupModel): String {
+        return "success"
     }
 
 }

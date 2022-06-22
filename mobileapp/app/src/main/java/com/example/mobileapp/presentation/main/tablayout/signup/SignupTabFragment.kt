@@ -21,6 +21,12 @@ class SignupTabFragment : Fragment(R.layout.signup_tab_fragment) {
         val passwordET = view.findViewById<EditText>(R.id.et_password)
         val confirmedPasswordET = view.findViewById<EditText>(R.id.et_confirmed_password)
 
+        signupViewModel.response.observe(viewLifecycleOwner) {
+            Log.i("SignupTabFragment", it)
+            // TODO: open a main screen
+
+        }
+
         view.findViewById<Button>(R.id.btn_signup).setOnClickListener {
             val login = emailET.text.toString()
             val password = passwordET.text.toString()
@@ -30,11 +36,12 @@ class SignupTabFragment : Fragment(R.layout.signup_tab_fragment) {
 
             val modelSignup = SignupModel(login, password, confirmedPassword)
 
-            val confirmed = checkForConfirmation(modelSignup.password, modelSignup.confirmedPassword)
+            val confirmed =
+                checkForConfirmation(modelSignup.password, modelSignup.confirmedPassword)
             Log.i("SignupTabFragment", "is confirmed: $confirmed")
             if (confirmed) {
                 signupViewModel.register(modelSignup)
-            }else{
+            } else {
                 // passwords are not the same, enter again
             }
         }

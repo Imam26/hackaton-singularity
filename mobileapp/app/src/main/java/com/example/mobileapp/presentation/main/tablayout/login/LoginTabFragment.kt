@@ -20,7 +20,6 @@ class LoginTabFragment : Fragment(R.layout.login_tab_fragment) {
         val editTextPassword = view.findViewById<EditText>(R.id.password)
 
         view.findViewById<Button>(R.id.btn_login).setOnClickListener {
-            // send model to viewModel`s function
             if (editTextLogin.text.toString().isEmpty() || editTextPassword.text.toString()
                     .isEmpty()
             ) return@setOnClickListener
