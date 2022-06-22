@@ -12,4 +12,5 @@ class App : Application() {
 
         startKoin { modules(mainModule, networkModule) }
     }
+
 }
