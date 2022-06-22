@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_complete">#33D158</color>
     <color name="color_goes">#007AFF</color>
+    <color name="color_not_start">#555151</color>
 </resources>

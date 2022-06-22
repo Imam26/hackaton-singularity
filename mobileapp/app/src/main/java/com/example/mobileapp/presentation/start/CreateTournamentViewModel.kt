@@ -3,6 +3,7 @@ package com.example.mobileapp.presentation.start
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobileapp.domain.model.Tournament
 import com.example.mobileapp.domain.model.TournamentType
 import com.example.mobileapp.domain.repository.TournamentRepository
 import kotlinx.coroutines.launch
@@ -17,5 +18,9 @@ class CreateTournamentViewModel(
         viewModelScope.launch {
             tournamentKinds.value = repository.getTournamentTypes()
         }
+    }
+
+    fun addTournament(tournament: Tournament){
+        repository.addTournament(tournament)
     }
 }
