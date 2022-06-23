@@ -1,13 +1,12 @@
 package com.example.mobileapp.presentation.start
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileapp.R
 import com.example.mobileapp.domain.model.Tournament
 import com.example.mobileapp.presentation.adapter.TournamentStatusAdapter
-import com.example.mobileapp.presentation.tournament.TournamentDetailFragment
+import com.example.mobileapp.presentation.const.Const
+import com.example.mobileapp.presentation.tournament.TournamentActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyTournamentFragment : Fragment(), OnClickListener {
@@ -66,12 +66,9 @@ class MyTournamentFragment : Fragment(), OnClickListener {
     }
 
     override fun onTournamentItemClicked(tournament: Tournament) {
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(
-            R.id.fragmentContainer,
-            TournamentDetailFragment.newInstance(tournament)
-        ).addToBackStack(null)
-            .commit()
+        val intent = Intent(context, TournamentActivity::class.java)
+        intent.putExtra(Const.tournamentTypeName, tournament.tournamentTypeName)
+        startActivity(intent)
     }
 
 }

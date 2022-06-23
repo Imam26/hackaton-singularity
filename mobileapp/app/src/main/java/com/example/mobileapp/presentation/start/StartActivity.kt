@@ -19,12 +19,10 @@ class StartActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.create -> {
-                    Toast.makeText(this, "create tournaments clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(CreateTournamentFragment(), false)
                     true
                 }
                 R.id.tournamentList -> {
-                    Toast.makeText(this, "my tournaments clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(MyTournamentFragment(), false)
                     true
                 }
