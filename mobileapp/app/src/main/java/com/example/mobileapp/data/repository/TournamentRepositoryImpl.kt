@@ -10,7 +10,7 @@ class TournamentRepositoryImpl: TournamentRepository {
         for(item in Data.tournaments){
             item.tournamentTypeName = Data.tournamentTypes.find { it.id == item.tournamentTypeId }?.name ?: ""
         }
-        return Data.tournaments
+        return Data.tournaments.filter { it.userId == userId }
     }
 
     override fun getTournamentTypes(): List<TournamentType> {
@@ -24,6 +24,10 @@ class TournamentRepositoryImpl: TournamentRepository {
             tournament.status = "Идет"
         } else if(tournament.statusId == 3){
             tournament.status = "Завершился"
+        }
+
+        Data.currentUser?.let {
+            tournament.userId = it.id
         }
 
         Data.tournaments.add(0, tournament)

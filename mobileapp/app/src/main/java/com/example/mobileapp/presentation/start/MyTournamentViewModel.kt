@@ -3,6 +3,7 @@ package com.example.mobileapp.presentation.start
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobileapp.data.Data
 import com.example.mobileapp.domain.model.Tournament
 import com.example.mobileapp.domain.repository.TournamentRepository
 import kotlinx.coroutines.launch
@@ -15,7 +16,9 @@ class MyTournamentViewModel(
 
     fun loadTournamentStatuses(){
         viewModelScope.launch {
-            tournamentStatuses.value = repository.getTournaments(12)
+            Data.currentUser?.let {
+                tournamentStatuses.value = repository.getTournaments(it.id)
+            }
         }
     }
 }
