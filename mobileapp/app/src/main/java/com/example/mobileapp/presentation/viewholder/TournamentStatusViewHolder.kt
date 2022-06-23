@@ -8,18 +8,19 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileapp.R
 import com.example.mobileapp.domain.model.Tournament
+import com.example.mobileapp.presentation.start.OnClickListener
 
 class TournamentStatusViewHolder(
     inflater: LayoutInflater,
     parent: ViewGroup
-): RecyclerView.ViewHolder(inflater.inflate(R.layout.item_tournament_status, parent, false))  {
+) : RecyclerView.ViewHolder(inflater.inflate(R.layout.item_tournament_status, parent, false)) {
 
     private lateinit var tournamentName: TextView
     private lateinit var tournamentStatusTw: TextView
     private lateinit var tournamentTypeName: TextView
 
     @RequiresApi(Build.VERSION_CODES.M)
-    fun onBind(item: Tournament, clickListener: (item: Tournament) -> Unit){
+    fun onBind(item: Tournament, clickListener: OnClickListener) {
         tournamentName = itemView.findViewById(R.id.tournamentName)
         tournamentName.text = item.name
 
@@ -42,7 +43,7 @@ class TournamentStatusViewHolder(
         }
 
         itemView.setOnClickListener {
-            clickListener(item)
+            clickListener.onTournamentItemClicked(item)
         }
     }
 }

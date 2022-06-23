@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileapp.domain.model.Tournament
+import com.example.mobileapp.presentation.start.OnClickListener
 import com.example.mobileapp.presentation.viewholder.TournamentStatusViewHolder
 
 class TournamentStatusAdapter(
-    private val clickListener: (item: Tournament) -> Unit,
+    private val clickListener: OnClickListener
 ): RecyclerView.Adapter<TournamentStatusViewHolder>() {
     private val data = mutableListOf<Tournament>()
 

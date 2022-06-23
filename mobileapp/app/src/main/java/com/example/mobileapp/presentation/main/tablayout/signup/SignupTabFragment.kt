@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.mobileapp.R
+import com.example.mobileapp.presentation.main.contract.navigator
 import com.example.mobileapp.presentation.main.model.SignupModel
 import com.example.mobileapp.presentation.start.StartActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,6 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SignupTabFragment : Fragment(R.layout.signup_tab_fragment) {
 
     private val signupViewModel: SignupViewModel by viewModel()
+    private lateinit var model: SignupModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,9 +27,12 @@ class SignupTabFragment : Fragment(R.layout.signup_tab_fragment) {
         val confirmedPasswordET = view.findViewById<EditText>(R.id.et_confirmed_password)
 
         signupViewModel.response.observe(viewLifecycleOwner) {
+            Toast.makeText(this.requireContext(), it, Toast.LENGTH_SHORT)
+                .show()
+
             if (it == "success") {
-                val intent = Intent(context, StartActivity::class.java)
-                startActivity(intent)
+                navigator().openLoginTab()
+                navigator().publishResult(model)
             }
         }
 
@@ -36,17 +41,22 @@ class SignupTabFragment : Fragment(R.layout.signup_tab_fragment) {
             val password = passwordET.text.toString()
             val confirmedPassword = confirmedPasswordET.text.toString()
 
-            if (login.isEmpty() || password.isEmpty() || confirmedPassword.isEmpty()) return@setOnClickListener
+            if (login.isEmpty() || password.isEmpty() || confirmedPassword.isEmpty()){
+                Toast.makeText(this.requireContext(), "Заполните поля", Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
 
-            val modelSignup = SignupModel(login, password, confirmedPassword)
+            model = SignupModel(login, password, confirmedPassword)
 
             val confirmed =
-                checkForConfirmation(modelSignup.password, modelSignup.confirmedPassword)
-            Log.i("SignupTabFragment", "is confirmed: $confirmed")
+                checkForConfirmation(model.password, model.confirmedPassword)
+
             if (confirmed) {
-                signupViewModel.register(modelSignup)
+                signupViewModel.register(model)
             } else {
-                // passwords are not the same, enter again
+                Toast.makeText(this.requireContext(), "Не совпадают пароли", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }

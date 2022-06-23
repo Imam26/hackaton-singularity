@@ -1,20 +1,24 @@
 package com.example.mobileapp.presentation.start
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileapp.R
+import com.example.mobileapp.domain.model.Tournament
 import com.example.mobileapp.presentation.adapter.TournamentStatusAdapter
+import com.example.mobileapp.presentation.tournament.TournamentDetailFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MyTournamentFragment : Fragment() {
+class MyTournamentFragment : Fragment(), OnClickListener {
 
     private val viewModel: MyTournamentViewModel by viewModel()
     private lateinit var tournamentStatusAdapter: TournamentStatusAdapter
@@ -23,16 +27,20 @@ class MyTournamentFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.tournamentStatuses.observe(this){
+        viewModel.tournamentStatuses.observe(this) {
             tournamentStatusAdapter.setItems(it)
-            if(it.isNotEmpty()){
+            if (it.isNotEmpty()) {
                 notFoundTv.alpha = 0F
             }
         }
         viewModel.loadTournamentStatuses()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_my_tournament, container, false)
         setupRecyclerView(view)
         notFoundTv = view.findViewById(R.id.notFoundTv)
@@ -40,10 +48,8 @@ class MyTournamentFragment : Fragment() {
         return view
     }
 
-    private fun setupRecyclerView(view: View){
-        tournamentStatusAdapter = TournamentStatusAdapter{
-            TODO()
-        }
+    private fun setupRecyclerView(view: View) {
+        tournamentStatusAdapter = TournamentStatusAdapter(this)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.tournamentListRv).apply {
             adapter = tournamentStatusAdapter
@@ -51,6 +57,21 @@ class MyTournamentFragment : Fragment() {
             itemAnimator = DefaultItemAnimator()
         }
 
-        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                recyclerView.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
+
+    override fun onTournamentItemClicked(tournament: Tournament) {
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(
+            R.id.fragmentContainer,
+            TournamentDetailFragment.newInstance(tournament)
+        ).addToBackStack(null)
+            .commit()
+    }
+
 }
