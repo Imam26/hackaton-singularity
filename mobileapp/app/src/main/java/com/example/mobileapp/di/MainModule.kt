@@ -11,8 +11,7 @@ import org.koin.dsl.module
 import com.example.mobileapp.presentation.start.MyTournamentViewModel
 
 val mainModule = module {
-    factory { }
-    factory { AuthRepository() }
+    factory { AuthRepository(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { SignupViewModel(get()) }
     factory<TournamentRepository> { TournamentRepositoryImpl() }
