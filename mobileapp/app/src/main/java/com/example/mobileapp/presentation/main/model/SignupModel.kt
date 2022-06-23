@@ -1,3 +1,8 @@
 package com.example.mobileapp.presentation.main.model
 
-data class SignupModel(val login: String, val password: String, val confirmedPassword: String)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+
+@Parcelize
+data class SignupModel(val login: String, val password: String, val confirmedPassword: String): Parcelable
