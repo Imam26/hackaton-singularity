@@ -2,6 +2,7 @@ package com.example.mobileapp.presentation.start
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.mobileapp.R
 import com.google.android.material.navigation.NavigationBarView
@@ -14,13 +15,16 @@ class StartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_start)
 
         bottomNavigationView = findViewById(R.id.bottomNav)
+
         bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.create -> {
+                    Toast.makeText(this, "create tournaments clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(CreateTournamentFragment(), false)
                     true
                 }
                 R.id.tournamentList -> {
+                    Toast.makeText(this, "my tournaments clicked", Toast.LENGTH_SHORT).show()
                     replaceFragment(MyTournamentFragment(), false)
                     true
                 }
@@ -31,13 +35,13 @@ class StartActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: Fragment, addToBackStack: Boolean = true) {
-        if(supportFragmentManager.findFragmentById(R.id.fragmentContainer)?.javaClass == fragment.javaClass) return
+        if (supportFragmentManager.findFragmentById(R.id.fragmentContainer)?.javaClass == fragment.javaClass) return
 
         val transaction = supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
 
-        if(addToBackStack)
+        if (addToBackStack)
             transaction.addToBackStack(null)
 
         transaction.commit()
@@ -48,7 +52,7 @@ class StartActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.fragmentContainer, fragment)
 
-        if(addToBackStack)
+        if (addToBackStack)
             transaction.addToBackStack(null)
 
         transaction.commit()

@@ -19,7 +19,7 @@ class TournamentAdapter: RecyclerView.Adapter<TournamentViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return 3
     }
 
     fun setData() {

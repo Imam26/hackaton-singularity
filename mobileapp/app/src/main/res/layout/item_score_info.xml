@@ -3,52 +3,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#E6E6E6"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:background="#E6E6E6">
 
     <TextView
         android:id="@+id/tv_player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="John"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_player2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="John" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Dina"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_player1"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Dina" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_edit_score1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="score"
+        android:inputType="number"
         app:layout_constraintEnd_toStartOf="@+id/et_edit_score2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_player1"
-        android:hint="score" />
+        app:layout_constraintTop_toBottomOf="@id/tv_player1" />
 
     <EditText
         android:id="@+id/et_edit_score2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="score"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/et_edit_score1"
-        app:layout_constraintTop_toBottomOf="@id/tv_player1"
-        android:hint="score" />
+        app:layout_constraintTop_toBottomOf="@id/tv_player1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

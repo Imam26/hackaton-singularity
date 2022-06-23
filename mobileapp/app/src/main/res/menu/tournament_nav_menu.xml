@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/round_menu_item"
+        android:enabled="true"
+        android:title="Раунд" />
+
+    <item
+        android:id="@+id/rating_menu_item"
+        android:enabled="true"
+        android:title="Рейтинг" />
+
+</menu>
