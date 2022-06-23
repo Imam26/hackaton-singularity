@@ -12,13 +12,19 @@ class AuthRepository(private val retrofit: Retrofit) {
     val service = retrofit.create(AuthService::class.java)
 
     suspend fun login(model: LoginModel):String {
-        val userId = service.login(model)
-        return if(userId == 0){
-            "Неверный логин или пароль"
-        } else {
-            Data.currentUser = User(userId, model.login, model.password)
-            "success"
+
+        try {
+            val userId = service.login(model)
+            return if(userId == 0){
+                "Неверный логин или пароль"
+            } else {
+                Data.currentUser = User(userId, model.login, model.password)
+                "success"
+            }
+        } catch (ex: Exception){
+            return ex.message.toString()
         }
+
         /*if(Data.users.any{it.login == model.login && it.password == model.password}){
             val user = Data.users.find{it.login == model.login && it.password == model.password}
             Data.currentUser = User(user!!.id, user.login, user.password)
