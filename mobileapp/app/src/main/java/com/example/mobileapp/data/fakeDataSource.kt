@@ -14,4 +14,6 @@ object Data {
     val tournaments = mutableListOf<Tournament>()
 
     val users = mutableListOf<User>()
+
+    var currentUser:User? = null
 }
